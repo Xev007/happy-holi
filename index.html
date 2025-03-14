@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Holi!</title>
+    <style>
+        body {
+            text-align: center;
+            background: url('https://png.pngtree.com/background/20220718/original/pngtree-colorful-indian-holi-spray-background-picture-image_1660809.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .container {
+            position: relative;
+            margin-top: 50px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+        .click-button {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .click-button:hover {
+            background-color: #e91e63;
+        }
+        .message {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+            display: none;
+            text-shadow: 4px 4px 6px black;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        .gif-effect {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        .color-splash {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,0,0,0.8), rgba(255,165,0,0.8), rgba(0,255,0,0.8), rgba(0,0,255,0.8), rgba(75,0,130,0.8), rgba(238,130,238,0.8));
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+        @keyframes splashEffect {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            30% { transform: translate(-50%, -50%) scale(3); opacity: 1; }
+            60% { transform: translate(-50%, -50%) scale(7); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(10); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Happy Holi! 🌸</h1>
+    <div class="container">
+        <div class="button-container" id="buttonContainer">
+            <button class="click-button" onclick="showHoliMagic()">Click Here</button>
+            <img src="https://media.tenor.com/WmOcSEp59_MAAAAi/peach-cat-goma.gif" alt="Cutie" id="Cutie">
+        </div>
+        <div class="message" id="holiMessage">Bura Na Maano, Holi Hai! 🎉</div>
+        <img src="https://media1.tenor.com/m/c8ot5pKTf40AAAAd/trilok-aro-indusries.gif" alt="Holi Effect" class="gif-effect" id="holiGif">
+        <img src="https://media.tenor.com/nsGh9gZ-EkQAAAAi/vergonha-beijos.gif" alt="Funny Gif" class="gif-effect" id="funnyGif" style="display: none;">
+    </div>
+    <div class="color-splash" id="splash"></div>
+    <script>
+        function showHoliMagic() {
+            let gif = document.getElementById('holiGif');
+            let splash = document.getElementById('splash');
+            let buttonContainer = document.getElementById('buttonContainer');
+            let message = document.getElementById('holiMessage');
+            let funnyGif = document.getElementById('funnyGif');
+            
+            // Fade out button
+            buttonContainer.style.opacity = '0';
+            setTimeout(() => {
+                buttonContainer.style.display = 'none';
+            }, 1000);
+            
+            // Fade in holi effect gif
+            gif.style.display = 'block';
+            setTimeout(() => {
+                gif.style.opacity = '1';
+            }, 100);
+            
+            // Keep it visible for 3 seconds, then remove abruptly
+            setTimeout(() => {
+                gif.style.opacity = '0';
+                setTimeout(() => {
+                    gif.style.display = 'none';
+                }, 100); // Hide after fade-out
+            }, 3000);
+            
+            setTimeout(() => {
+                splash.style.width = '100vw';
+                splash.style.height = '100vh';
+                splash.style.animation = 'splashEffect 3s ease-out forwards';
+                splash.style.opacity = '1';
+            }, 3000);
+            
+            setTimeout(() => {
+                message.style.display = 'block';
+                message.style.opacity = '1';
+            }, 4000);
+            
+            setTimeout(() => {
+                splash.style.opacity = '0';
+            }, 6000);
+            
+            setTimeout(() => {
+                funnyGif.style.display = 'block';
+                funnyGif.style.opacity = '1';
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
